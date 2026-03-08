@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace OzonLookWinForm
 {
-    public partial class Profile : UserControl
+    public partial class ProfileControl : UserControl
     {
-        public Profile()
+        public ProfileControl()
         {
             InitializeComponent();
         }

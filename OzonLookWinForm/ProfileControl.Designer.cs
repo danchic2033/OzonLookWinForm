@@ -1,6 +1,6 @@
 ﻿namespace OzonLookWinForm
 {
-    partial class Profile
+    partial class ProfileControl
     {
         /// <summary> 
         /// Required designer variable.

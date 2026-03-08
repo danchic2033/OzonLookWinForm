@@ -1,0 +1,238 @@
+﻿namespace OzonLookWinForm
+{
+    partial class ProductControl
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            fitButton = new Guna.UI2.WinForms.Guna2Button();
+            shopButton = new Guna.UI2.WinForms.Guna2Button();
+            brendLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            nameOfClothe = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            nameOfBrendLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            compositionLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            compositionProductLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            articleLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            articleNumberLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            priceLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            priceOfProduct = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            descriptionLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            raitingLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
+            SuspendLayout();
+            // 
+            // guna2PictureBox1
+            // 
+            guna2PictureBox1.CustomizableEdges = customizableEdges1;
+            guna2PictureBox1.ImageRotate = 0F;
+            guna2PictureBox1.Location = new Point(127, 38);
+            guna2PictureBox1.Name = "guna2PictureBox1";
+            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            guna2PictureBox1.Size = new Size(220, 229);
+            guna2PictureBox1.TabIndex = 0;
+            guna2PictureBox1.TabStop = false;
+            // 
+            // fitButton
+            // 
+            fitButton.CustomizableEdges = customizableEdges3;
+            fitButton.DisabledState.BorderColor = Color.DarkGray;
+            fitButton.DisabledState.CustomBorderColor = Color.DarkGray;
+            fitButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            fitButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            fitButton.Font = new Font("Segoe UI", 9F);
+            fitButton.ForeColor = Color.White;
+            fitButton.Location = new Point(127, 330);
+            fitButton.Name = "fitButton";
+            fitButton.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            fitButton.Size = new Size(220, 45);
+            fitButton.TabIndex = 1;
+            fitButton.Text = "Примерить";
+            // 
+            // shopButton
+            // 
+            shopButton.CustomizableEdges = customizableEdges5;
+            shopButton.DisabledState.BorderColor = Color.DarkGray;
+            shopButton.DisabledState.CustomBorderColor = Color.DarkGray;
+            shopButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            shopButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            shopButton.Font = new Font("Segoe UI", 9F);
+            shopButton.ForeColor = Color.White;
+            shopButton.Location = new Point(127, 381);
+            shopButton.Name = "shopButton";
+            shopButton.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            shopButton.Size = new Size(220, 45);
+            shopButton.TabIndex = 2;
+            shopButton.Text = "Перейти в магазин";
+            // 
+            // brendLabel
+            // 
+            brendLabel.BackColor = Color.Transparent;
+            brendLabel.Location = new Point(370, 58);
+            brendLabel.Name = "brendLabel";
+            brendLabel.Size = new Size(39, 17);
+            brendLabel.TabIndex = 3;
+            brendLabel.Text = "Бренд:";
+            // 
+            // nameOfClothe
+            // 
+            nameOfClothe.BackColor = Color.Transparent;
+            nameOfClothe.Location = new Point(127, 273);
+            nameOfClothe.Name = "nameOfClothe";
+            nameOfClothe.Size = new Size(55, 17);
+            nameOfClothe.TabIndex = 4;
+            nameOfClothe.Text = "Название";
+            // 
+            // nameOfBrendLabel
+            // 
+            nameOfBrendLabel.BackColor = Color.Transparent;
+            nameOfBrendLabel.Location = new Point(415, 58);
+            nameOfBrendLabel.Name = "nameOfBrendLabel";
+            nameOfBrendLabel.Size = new Size(97, 17);
+            nameOfBrendLabel.TabIndex = 5;
+            nameOfBrendLabel.Text = "Название бренда";
+            // 
+            // compositionLabel
+            // 
+            compositionLabel.BackColor = Color.Transparent;
+            compositionLabel.Location = new Point(370, 93);
+            compositionLabel.Name = "compositionLabel";
+            compositionLabel.Size = new Size(44, 17);
+            compositionLabel.TabIndex = 6;
+            compositionLabel.Text = "Состав:";
+            // 
+            // compositionProductLabel
+            // 
+            compositionProductLabel.BackColor = Color.Transparent;
+            compositionProductLabel.Location = new Point(420, 93);
+            compositionProductLabel.Name = "compositionProductLabel";
+            compositionProductLabel.Size = new Size(81, 17);
+            compositionProductLabel.TabIndex = 7;
+            compositionProductLabel.Text = "Состав товара";
+            // 
+            // articleLabel
+            // 
+            articleLabel.BackColor = Color.Transparent;
+            articleLabel.Location = new Point(371, 128);
+            articleLabel.Name = "articleLabel";
+            articleLabel.Size = new Size(52, 17);
+            articleLabel.TabIndex = 8;
+            articleLabel.Text = "Артикул:";
+            // 
+            // articleNumberLabel
+            // 
+            articleNumberLabel.BackColor = Color.Transparent;
+            articleNumberLabel.Location = new Point(429, 128);
+            articleNumberLabel.Name = "articleNumberLabel";
+            articleNumberLabel.Size = new Size(94, 17);
+            articleNumberLabel.TabIndex = 9;
+            articleNumberLabel.Text = "Номер артикула";
+            // 
+            // priceLabel
+            // 
+            priceLabel.BackColor = Color.Transparent;
+            priceLabel.Location = new Point(371, 162);
+            priceLabel.Name = "priceLabel";
+            priceLabel.Size = new Size(34, 17);
+            priceLabel.TabIndex = 10;
+            priceLabel.Text = "Цена:";
+            // 
+            // priceOfProduct
+            // 
+            priceOfProduct.BackColor = Color.Transparent;
+            priceOfProduct.Location = new Point(426, 162);
+            priceOfProduct.Name = "priceOfProduct";
+            priceOfProduct.Size = new Size(31, 17);
+            priceOfProduct.TabIndex = 11;
+            priceOfProduct.Text = "Цена";
+            // 
+            // descriptionLabel
+            // 
+            descriptionLabel.BackColor = Color.Transparent;
+            descriptionLabel.Location = new Point(371, 201);
+            descriptionLabel.Name = "descriptionLabel";
+            descriptionLabel.Size = new Size(58, 17);
+            descriptionLabel.TabIndex = 12;
+            descriptionLabel.Text = "Описание";
+            // 
+            // raitingLabel
+            // 
+            raitingLabel.BackColor = Color.Transparent;
+            raitingLabel.Location = new Point(127, 307);
+            raitingLabel.Name = "raitingLabel";
+            raitingLabel.Size = new Size(47, 17);
+            raitingLabel.TabIndex = 13;
+            raitingLabel.Text = "Рейтинг";
+            // 
+            // ProductControl
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(raitingLabel);
+            Controls.Add(descriptionLabel);
+            Controls.Add(priceOfProduct);
+            Controls.Add(priceLabel);
+            Controls.Add(articleNumberLabel);
+            Controls.Add(articleLabel);
+            Controls.Add(compositionProductLabel);
+            Controls.Add(compositionLabel);
+            Controls.Add(nameOfBrendLabel);
+            Controls.Add(nameOfClothe);
+            Controls.Add(brendLabel);
+            Controls.Add(shopButton);
+            Controls.Add(fitButton);
+            Controls.Add(guna2PictureBox1);
+            Name = "ProductControl";
+            Size = new Size(702, 426);
+            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
+        #endregion
+
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
+        private Guna.UI2.WinForms.Guna2Button fitButton;
+        private Guna.UI2.WinForms.Guna2Button shopButton;
+        private Guna.UI2.WinForms.Guna2HtmlLabel brendLabel;
+        private Guna.UI2.WinForms.Guna2HtmlLabel nameOfClothe;
+        private Guna.UI2.WinForms.Guna2HtmlLabel nameOfBrendLabel;
+        private Guna.UI2.WinForms.Guna2HtmlLabel compositionLabel;
+        private Guna.UI2.WinForms.Guna2HtmlLabel compositionProductLabel;
+        private Guna.UI2.WinForms.Guna2HtmlLabel articleLabel;
+        private Guna.UI2.WinForms.Guna2HtmlLabel articleNumberLabel;
+        private Guna.UI2.WinForms.Guna2HtmlLabel priceLabel;
+        private Guna.UI2.WinForms.Guna2HtmlLabel priceOfProduct;
+        private Guna.UI2.WinForms.Guna2HtmlLabel descriptionLabel;
+        private Guna.UI2.WinForms.Guna2HtmlLabel raitingLabel;
+    }
+}

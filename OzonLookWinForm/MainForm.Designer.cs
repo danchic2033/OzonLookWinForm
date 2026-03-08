@@ -223,7 +223,7 @@
             catalogeButton.Size = new Size(101, 41);
             catalogeButton.TabIndex = 1;
             catalogeButton.Text = "Каталог";
-            catalogeButton.Click += guna2Button2_Click;
+            catalogeButton.Click += Catalog_Button_Click;
             // 
             // MainForm
             // 
