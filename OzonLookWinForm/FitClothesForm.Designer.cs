@@ -90,6 +90,7 @@
             uploadPhoto.DisabledState.CustomBorderColor = Color.DarkGray;
             uploadPhoto.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             uploadPhoto.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            uploadPhoto.FillColor = Color.FromArgb(26, 108, 254);
             uploadPhoto.Font = new Font("Segoe UI", 9F);
             uploadPhoto.ForeColor = Color.White;
             uploadPhoto.Location = new Point(12, 333);
@@ -107,6 +108,7 @@
             getFitResult.DisabledState.CustomBorderColor = Color.DarkGray;
             getFitResult.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             getFitResult.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            getFitResult.FillColor = Color.FromArgb(26, 108, 254);
             getFitResult.Font = new Font("Segoe UI", 9F);
             getFitResult.ForeColor = Color.White;
             getFitResult.Location = new Point(200, 333);

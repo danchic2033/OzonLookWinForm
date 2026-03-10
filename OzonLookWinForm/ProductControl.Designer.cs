@@ -71,6 +71,7 @@
             fitButton.DisabledState.CustomBorderColor = Color.DarkGray;
             fitButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             fitButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            fitButton.FillColor = Color.FromArgb(26, 108, 254);
             fitButton.Font = new Font("Segoe UI", 9F);
             fitButton.ForeColor = Color.White;
             fitButton.Location = new Point(127, 330);
@@ -88,6 +89,7 @@
             shopButton.DisabledState.CustomBorderColor = Color.DarkGray;
             shopButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             shopButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            shopButton.FillColor = Color.FromArgb(26, 108, 254);
             shopButton.Font = new Font("Segoe UI", 9F);
             shopButton.ForeColor = Color.White;
             shopButton.Location = new Point(127, 381);
