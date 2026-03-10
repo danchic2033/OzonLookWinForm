@@ -14,7 +14,6 @@ namespace OzonLookWinForm
 {
     public partial class ProductControl : UserControl
     {
-        private ProductControl? productControl;
         private ApplicationDbContext _context = new ApplicationDbContext();
         private List<Product> products;
         public ProductControl()
@@ -39,6 +38,13 @@ namespace OzonLookWinForm
             articleNumberLabel.Text = product.Article;
             priceOfProduct.Text = product.Price;
             descriptionLabel.Text = product.Description;
+        }
+
+        private void fitButton_Click(object sender, EventArgs e)
+        {
+            var image = productPicture.Image;
+            var fitClothesForm = new FitClothesForm(image);
+            fitClothesForm.ShowDialog();
         }
     }
 }

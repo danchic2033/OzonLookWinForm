@@ -79,6 +79,7 @@
             fitButton.Size = new Size(220, 45);
             fitButton.TabIndex = 1;
             fitButton.Text = "Примерить";
+            fitButton.Click += fitButton_Click;
             // 
             // shopButton
             // 
