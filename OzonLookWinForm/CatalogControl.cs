@@ -21,6 +21,7 @@ namespace OzonLookWinForm
 
         private void fitButton_Click(object sender, EventArgs e)
         {
+            this.Controls.Clear();
             productControl = new ProductControl();
             productControl.Visible = true;
             this.Controls.Add(productControl);

@@ -4,6 +4,7 @@ namespace OzonLookWinForm
     {
         private ProfileControl? profileControl;
         private CatalogControl? catalogControl;
+        private ProfileControl? productControl;
 
         public MainForm()
         {
@@ -25,9 +26,18 @@ namespace OzonLookWinForm
         private void Catalog_Button_Click(object sender, EventArgs e)
         {
             catalogControl = new CatalogControl();
+            this.Controls.Add(catalogControl);
             profileControl.Visible = false;
             catalogControl.Visible = true;
             this.Controls.Add(catalogControl);
+        }
+
+        private void fitButton_Click(object sender, EventArgs e)
+        {
+            this.Controls.Add(catalogControl);
+            catalogControl.Hide();
+            productControl.Visible = true;
+            this.Controls.Add(productControl);
         }
 
         private void guna2Button3_Click(object sender, EventArgs e)
