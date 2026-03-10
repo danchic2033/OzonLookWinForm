@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Library;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +15,8 @@ namespace OzonLookWinForm
     public partial class CatalogControl : UserControl
     {
         private ProductControl? productControl;
-        private CatalogControl? catalogControl;
+        private ApplicationDbContext _context = new ApplicationDbContext();
+        private List<Product> products;
         public CatalogControl()
         {
             InitializeComponent();

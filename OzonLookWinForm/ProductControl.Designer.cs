@@ -34,7 +34,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            productPicture = new Guna.UI2.WinForms.Guna2PictureBox();
             fitButton = new Guna.UI2.WinForms.Guna2Button();
             shopButton = new Guna.UI2.WinForms.Guna2Button();
             brendLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -48,19 +48,21 @@
             priceOfProduct = new Guna.UI2.WinForms.Guna2HtmlLabel();
             descriptionLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
             raitingLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)productPicture).BeginInit();
             SuspendLayout();
             // 
-            // guna2PictureBox1
+            // productPicture
             // 
-            guna2PictureBox1.CustomizableEdges = customizableEdges1;
-            guna2PictureBox1.ImageRotate = 0F;
-            guna2PictureBox1.Location = new Point(127, 38);
-            guna2PictureBox1.Name = "guna2PictureBox1";
-            guna2PictureBox1.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2PictureBox1.Size = new Size(220, 229);
-            guna2PictureBox1.TabIndex = 0;
-            guna2PictureBox1.TabStop = false;
+            productPicture.CustomizableEdges = customizableEdges1;
+            productPicture.Image = Properties.Resources._5646975_01;
+            productPicture.ImageRotate = 0F;
+            productPicture.Location = new Point(127, 38);
+            productPicture.Name = "productPicture";
+            productPicture.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            productPicture.Size = new Size(220, 229);
+            productPicture.SizeMode = PictureBoxSizeMode.Zoom;
+            productPicture.TabIndex = 0;
+            productPicture.TabStop = false;
             // 
             // fitButton
             // 
@@ -210,17 +212,18 @@
             Controls.Add(brendLabel);
             Controls.Add(shopButton);
             Controls.Add(fitButton);
-            Controls.Add(guna2PictureBox1);
+            Controls.Add(productPicture);
             Name = "ProductControl";
             Size = new Size(702, 426);
-            ((System.ComponentModel.ISupportInitialize)guna2PictureBox1).EndInit();
+            Load += ProductControl_Load;
+            ((System.ComponentModel.ISupportInitialize)productPicture).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
+        private Guna.UI2.WinForms.Guna2PictureBox productPicture;
         private Guna.UI2.WinForms.Guna2Button fitButton;
         private Guna.UI2.WinForms.Guna2Button shopButton;
         private Guna.UI2.WinForms.Guna2HtmlLabel brendLabel;
