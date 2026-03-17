@@ -117,6 +117,7 @@
             getFitResult.Size = new Size(152, 33);
             getFitResult.TabIndex = 4;
             getFitResult.Text = "Примерить";
+            getFitResult.Click += getFitResult_Click;
             // 
             // FitClothesForm
             // 
