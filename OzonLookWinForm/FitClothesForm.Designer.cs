@@ -52,7 +52,7 @@
             // 
             userPicture.CustomizableEdges = customizableEdges1;
             userPicture.ImageRotate = 0F;
-            userPicture.Location = new Point(12, 100);
+            userPicture.Location = new Point(12, 87);
             userPicture.Name = "userPicture";
             userPicture.ShadowDecoration.CustomizableEdges = customizableEdges2;
             userPicture.Size = new Size(155, 188);
@@ -64,7 +64,7 @@
             // 
             catalogPicture.CustomizableEdges = customizableEdges3;
             catalogPicture.ImageRotate = 0F;
-            catalogPicture.Location = new Point(200, 100);
+            catalogPicture.Location = new Point(200, 87);
             catalogPicture.Name = "catalogPicture";
             catalogPicture.ShadowDecoration.CustomizableEdges = customizableEdges4;
             catalogPicture.Size = new Size(152, 188);

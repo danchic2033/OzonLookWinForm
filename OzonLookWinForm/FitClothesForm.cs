@@ -35,11 +35,16 @@ namespace OzonLookWinForm
                 try
                 {
                     userPicture.Image = new Bitmap(openFileDialoge.FileName);
+                    var image = userPicture.Image;
+                    userPicture.Image = DetectPose(image);
                 }
                 catch
                 { }
             }
+        }
 
+        private Bitmap DetectPose(Image image)
+        {
             try
             {
 
@@ -96,13 +101,11 @@ namespace OzonLookWinForm
 
                 var net = DnnInvoke.ReadNetFromCaffe(prototxt, modelPath);
 
-                
-                var image = userPicture.Image;
                 var imageHeight = image.Height;
                 var imageWidth = image.Width;
 
                 // Получение изображения из PictureBox
-                Bitmap bitmapImage = (Bitmap)userPicture.Image;
+                Bitmap bitmapImage = (Bitmap)image;
 
                 // Создание Emgu CV изображения
                 Image<Bgr, byte> inputImage = bitmapImage.ToImage<Bgr, byte>();
@@ -159,7 +162,7 @@ namespace OzonLookWinForm
                         CvInvoke.Circle(inputImage, p, 5, new MCvScalar(0, 255, 0), -1);
                         CvInvoke.PutText(inputImage, i.ToString(), p, Emgu.CV.CvEnum.FontFace.HersheySimplex, 0.8, new MCvScalar(0, 0, 255), 1, Emgu.CV.CvEnum.LineType.AntiAlias);
 
-                        
+
                     }
                 }
 
@@ -174,15 +177,20 @@ namespace OzonLookWinForm
                     }
                 }
 
-                userPicture.Image = inputImage.ToBitmap();
+                var result = inputImage.ToBitmap();
+                return result;
             }
-            catch 
-            { }
+            catch
+            {
+                var result = image;
+                return (Bitmap)result;
+            }
         }
 
         private void getFitResult_Click(object sender, EventArgs e)
         {
-
+            var image = catalogPicture.Image;
+            catalogPicture.Image = DetectPose(image);
         }
     }
 }
