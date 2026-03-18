@@ -80,6 +80,7 @@
             resultPicture.Name = "resultPicture";
             resultPicture.ShadowDecoration.CustomizableEdges = customizableEdges6;
             resultPicture.Size = new Size(381, 426);
+            resultPicture.SizeMode = PictureBoxSizeMode.Zoom;
             resultPicture.TabIndex = 2;
             resultPicture.TabStop = false;
             // 

@@ -1,6 +1,10 @@
 ﻿using Emgu.CV;
 using Emgu.CV.Dnn;
 using Emgu.CV.Structure;
+using Emgu.CV.CvEnum;
+using Microsoft.ML.OnnxRuntime;
+using Microsoft.ML.OnnxRuntime.Tensors;
+using SixLabors.ImageSharp.ColorSpaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,6 +15,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Hsv = Emgu.CV.Structure.Hsv;
 
 namespace OzonLookWinForm
 {
@@ -24,7 +29,7 @@ namespace OzonLookWinForm
 
         private void FitClothesForm_Load(object sender, EventArgs e)
         {
-
+            SegmentClothe();
         }
 
         private void uploadPhoto_Click(object sender, EventArgs e)
@@ -187,10 +192,99 @@ namespace OzonLookWinForm
             }
         }
 
+        private void SegmentClothe()
+        {
+            if (catalogPicture.Image == null || userPicture.Image == null)
+                return;
+
+            // Исходное изображение одежды (каталога)
+            Bitmap catalogBitmap = (Bitmap)catalogPicture.Image;
+
+            // Создаем маску сегментации верхней одежды по цвету (черный цвет)
+            Image<Bgr, byte> clothingImage = catalogBitmap.ToImage<Bgr, byte>();
+            Mat mask = new Mat();
+
+            // Цветовая сегментация (черный цвет)
+            var hsvImage = clothingImage.Convert<Hsv, byte>();
+            var lowerBound = new Hsv(0, 0, 0);
+            var upperBound = new Hsv(180, 255, 50);
+            CvInvoke.InRange(hsvImage, new ScalarArray(lowerBound.MCvScalar), new ScalarArray(upperBound.MCvScalar), mask);
+
+            // Улучшение маски
+            Mat kernel = CvInvoke.GetStructuringElement(0, new Size(5, 5), new Point(-1, -1));
+            CvInvoke.MorphologyEx(mask, mask, MorphOp.Open, kernel, new Point(-1, -1), 2, BorderType.Default, new MCvScalar());
+            CvInvoke.MorphologyEx(mask, mask, MorphOp.Close, kernel, new Point(-1, -1), 2, BorderType.Default, new MCvScalar());
+
+            // Вырезаем одежду
+            Image<Bgr, byte> clothes = new Image<Bgr, byte>(clothingImage.Width, clothingImage.Height);
+            clothes.SetZero();
+
+            // Получаем данные маски
+            byte[,] maskData = (byte[,])mask.GetData();
+
+            for (int y = 0; y < clothingImage.Height; y++)
+            {
+                for (int x = 0; x < clothingImage.Width; x++)
+                {
+                    byte maskPixel = maskData[y, x];
+                    if (maskPixel != 0)
+                    {
+                        var pixel = clothingImage[y, x];
+                        clothes[y, x] = pixel;
+                    }
+                }
+            }
+
+            // Создаем изображение с альфа-каналом для прозрачности
+            Image<Bgra, byte> clothesWithAlpha = new Image<Bgra, byte>(clothes.Width, clothes.Height);
+
+            // Заполняем изображение с альфа-каналом
+            for (int y = 0; y < clothes.Height; y++)
+            {
+                for (int x = 0; x < clothes.Width; x++)
+                {
+                    var pixelBgr = clothes[y, x];
+                    byte alpha = 255; // полностью непрозрачно
+                    byte maskPixel = maskData[y, x];
+
+                    if (maskPixel == 0)
+                    {
+                        alpha = 0; // прозрачный
+                    }
+
+                    clothesWithAlpha[y, x] = new Bgra(pixelBgr.Blue, pixelBgr.Green, pixelBgr.Red, alpha);
+                }
+            }
+
+            // Масштабируем одежду с прозрачным фоном
+            var targetBitmap = (Bitmap)userPicture.Image;
+            int targetWidth = targetBitmap.Width;
+            int targetHeight = targetBitmap.Height;
+
+            var overlay = clothesWithAlpha.Resize(targetWidth / 3, targetHeight / 3, Inter.Linear);
+
+            int offsetX = targetWidth / 3;
+            int offsetY = targetHeight / 3;
+
+            // Создаем финальное изображение с прозрачностью
+            Bitmap resultBitmap = new Bitmap(targetBitmap.Width, targetBitmap.Height, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+            using (Graphics g = Graphics.FromImage(resultBitmap))
+            {
+                g.DrawImage(targetBitmap, 0, 0);
+                g.DrawImage(overlay.ToBitmap(), offsetX, offsetY);
+            }
+
+            // Выводим результат
+            resultPicture.Image = resultBitmap;
+
+        }
+
         private void getFitResult_Click(object sender, EventArgs e)
         {
             var image = catalogPicture.Image;
-            catalogPicture.Image = DetectPose(image);
+            DetectPose(image);
+
+            SegmentClothe();
         }
     }
 }
