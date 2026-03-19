@@ -164,7 +164,7 @@
             historyButton.Size = new Size(101, 41);
             historyButton.TabIndex = 3;
             historyButton.Text = "История";
-            historyButton.Click += guna2Button4_Click;
+            historyButton.Click += historyButton_Click;
             // 
             // favoriteButton
             // 
@@ -183,7 +183,7 @@
             favoriteButton.Size = new Size(101, 41);
             favoriteButton.TabIndex = 2;
             favoriteButton.Text = "Избранное";
-            favoriteButton.Click += guna2Button3_Click;
+            favoriteButton.Click += favoriteButton_Click;
             // 
             // profileButton
             // 

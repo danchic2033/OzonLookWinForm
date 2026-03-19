@@ -40,12 +40,12 @@ namespace OzonLookWinForm
             this.Controls.Add(productControl);
         }
 
-        private void guna2Button3_Click(object sender, EventArgs e)
+        private void favoriteButton_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void guna2Button4_Click(object sender, EventArgs e)
+        private void historyButton_Click(object sender, EventArgs e)
         {
 
         }
