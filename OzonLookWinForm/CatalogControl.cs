@@ -22,8 +22,10 @@ namespace OzonLookWinForm
         public CatalogControl()
         {
             InitializeComponent();
+            this.AutoScroll = true;
             products = _context.Products.ToList();
             InitCatalogMap();
+
         }
 
         private void fitButton_Click(object sender, EventArgs e)
@@ -36,11 +38,11 @@ namespace OzonLookWinForm
 
         private void InitCatalogMap()
         {
-            catalogMap = new CatalogItem[2, products.Count / 2];
+            catalogMap = new CatalogItem[products.Count / 2, 2];
 
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < products.Count / 2; i++)
             {
-                for (int j = 0; j < products.Count / 2; j++)
+                for (int j = 0; j < 2; j++)
                 {
                     var newCatalogItem = CreateCatalogItem(i, j);
                     Controls.Add(newCatalogItem.PictureBox);
@@ -75,8 +77,8 @@ namespace OzonLookWinForm
             catalogItem.Button.FillColor = Color.FromArgb(26, 108, 254);
             catalogItem.Button.Font = new Font("Segoe UI", 9F);
             catalogItem.Button.ForeColor = Color.White;
-            int x = 200 + indexColumn * 210;
-            int y = 210 + indexRow * 220;
+            int x = 200 + indexColumn * 250;
+            int y = 210 + indexRow * 260;
             catalogItem.Button.Location = new Point(x, y);
             catalogItem.Button.Name = "fitButton";
             catalogItem.Button.ShadowDecoration.CustomizableEdges = customizableEdges6;
@@ -89,8 +91,8 @@ namespace OzonLookWinForm
             // 
             catalogItem.PictureBox.CustomizableEdges = customizableEdges7;
             catalogItem.PictureBox.ImageRotate = 0F;
-            x = 200 + indexColumn * 210;
-            y = 50 + indexRow * 210;
+            x = 200 + indexColumn * 250;
+            y = 50 + indexRow * 260;
             catalogItem.PictureBox.Location = new Point(x, y);
             catalogItem.PictureBox.Name = "guna2PictureBox1";
             catalogItem.PictureBox.ShadowDecoration.CustomizableEdges = customizableEdges8;
@@ -99,6 +101,25 @@ namespace OzonLookWinForm
             catalogItem.PictureBox.TabStop = false;
 
             return catalogItem;
+        }
+
+        private void guna2vScrollBar1_Scroll(object sender, ScrollEventArgs e)
+        {
+            // Получаем ссылку на полосу прокрутки
+            var scrollBar = sender as VScrollBar; // или HScrollBar, в зависимости от типа
+            if (scrollBar != null)
+            {
+                // Значение текущей позиции прокрутки
+                int newValue = scrollBar.Value;
+
+                // Здесь обновляем расположение элементов внутри UserControl
+                // Например, сдвигаем панель или элементы
+                // Предположим, у вас есть панель, содержащая элементы:
+                // panelCatalog
+
+                // Например, сдвигаем панель по вертикали:
+                this.Location = new Point(this.Location.X, +newValue);
+            }
         }
     }
 }
