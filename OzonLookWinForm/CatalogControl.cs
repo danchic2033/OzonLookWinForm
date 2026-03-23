@@ -103,7 +103,7 @@ namespace OzonLookWinForm
             return catalogItem;
         }
 
-        private void guna2vScrollBar1_Scroll_1(object sender, ScrollEventArgs e)
+        private void CatalogScroll(object sender, ScrollEventArgs e)
         {
             var scrollBar = sender as Guna2VScrollBar;
             if (scrollBar != null)
