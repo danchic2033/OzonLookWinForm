@@ -48,6 +48,7 @@
             // 
             // guna2vScrollBar1
             // 
+            guna2vScrollBar1.FillColor = Color.FromArgb(246, 247, 251);
             guna2vScrollBar1.InUpdate = false;
             guna2vScrollBar1.LargeChange = 10;
             guna2vScrollBar1.Location = new Point(723, 113);
@@ -55,7 +56,7 @@
             guna2vScrollBar1.ScrollbarSize = 18;
             guna2vScrollBar1.Size = new Size(18, 262);
             guna2vScrollBar1.TabIndex = 0;
-            guna2vScrollBar1.ThumbColor = Color.FromArgb(26, 108, 254);
+            guna2vScrollBar1.ThumbColor = Color.FromArgb(246, 247, 251);
             // 
             // CatalogControl
             // 
