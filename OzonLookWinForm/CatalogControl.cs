@@ -1,4 +1,5 @@
-﻿using Guna.UI2.WinForms.Suite;
+﻿using Guna.UI2.WinForms;
+using Guna.UI2.WinForms.Suite;
 using Library;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -22,10 +23,9 @@ namespace OzonLookWinForm
         public CatalogControl()
         {
             InitializeComponent();
-            this.AutoScroll = true;
             products = _context.Products.ToList();
             InitCatalogMap();
-
+            guna2vScrollBar1.BindingContainer = catalogPanel;
         }
 
         private void fitButton_Click(object sender, EventArgs e)
@@ -45,8 +45,8 @@ namespace OzonLookWinForm
                 for (int j = 0; j < 2; j++)
                 {
                     var newCatalogItem = CreateCatalogItem(i, j);
-                    Controls.Add(newCatalogItem.PictureBox);
-                    Controls.Add(newCatalogItem.Button);
+                    catalogPanel.Controls.Add(newCatalogItem.PictureBox);
+                    catalogPanel.Controls.Add(newCatalogItem.Button);
                     newCatalogItem.Button.BringToFront();
                     catalogMap[i, j] = newCatalogItem;
                 }
@@ -103,23 +103,15 @@ namespace OzonLookWinForm
             return catalogItem;
         }
 
-        private void guna2vScrollBar1_Scroll(object sender, ScrollEventArgs e)
+        private void guna2vScrollBar1_Scroll_1(object sender, ScrollEventArgs e)
         {
-            // Получаем ссылку на полосу прокрутки
-            var scrollBar = sender as VScrollBar; // или HScrollBar, в зависимости от типа
+            var scrollBar = sender as Guna2VScrollBar;
             if (scrollBar != null)
             {
-                // Значение текущей позиции прокрутки
-                int newValue = scrollBar.Value;
-
-                // Здесь обновляем расположение элементов внутри UserControl
-                // Например, сдвигаем панель или элементы
-                // Предположим, у вас есть панель, содержащая элементы:
-                // panelCatalog
-
-                // Например, сдвигаем панель по вертикали:
-                this.Location = new Point(this.Location.X, +newValue);
+                var newValue = scrollBar.Value;
+                this.Location = new Point(this.Location.X, -newValue);
             }
         }
+
     }
 }
