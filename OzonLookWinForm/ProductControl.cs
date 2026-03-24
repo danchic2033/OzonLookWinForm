@@ -16,11 +16,13 @@ namespace OzonLookWinForm
     {
         private ApplicationDbContext _context = new ApplicationDbContext();
         private List<Product> products;
-        public ProductControl()
+        private int _primaryKey;
+        public ProductControl(int primaryKey)
         {
             InitializeComponent();
             products = _context.Products.ToList();
             this.Load += ProductControl_Load;
+            _primaryKey = primaryKey;
         }
 
         private void ProductControl_Load(object sender, EventArgs e)
@@ -30,7 +32,7 @@ namespace OzonLookWinForm
 
         private void ShowProduct()
         {
-            var product = products[0];
+            var product = products[_primaryKey - 1];
 
             nameOfBrendLabel.Text = product.Brend;
             nameOfClothe.Text = product.Name;

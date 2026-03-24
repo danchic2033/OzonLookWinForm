@@ -2,15 +2,19 @@
 using Guna.UI2.WinForms.Suite;
 using Library;
 using Microsoft.EntityFrameworkCore;
+using OzonLookWinForm.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Tensorflow.Operations.Initializers;
 
 namespace OzonLookWinForm
 {
@@ -20,20 +24,14 @@ namespace OzonLookWinForm
         private ProductControl? productControl;
         private ApplicationDbContext _context = new ApplicationDbContext();
         private List<Product> products;
+        private int _selectedKey;
+        private int _primaryKey = 1;
         public CatalogControl()
         {
             InitializeComponent();
             products = _context.Products.ToList();
             InitCatalogMap();
             guna2vScrollBar1.BindingContainer = catalogPanel;
-        }
-
-        private void fitButton_Click(object sender, EventArgs e)
-        {
-            this.Controls.Clear();
-            productControl = new ProductControl();
-            productControl.Visible = true;
-            this.Controls.Add(productControl);
         }
 
         private void InitCatalogMap()
@@ -85,7 +83,20 @@ namespace OzonLookWinForm
             catalogItem.Button.Size = new Size(200, 40);
             catalogItem.Button.TabIndex = 1;
             catalogItem.Button.Text = "Примерить";
-            catalogItem.Button.Click += fitButton_Click;
+            //catalogItem.Button.Click += fitButton_Click;
+
+            var tagData = new ButtonTag
+            {
+                I = indexRow,
+                J = indexColumn,
+                PrimaryKey = _primaryKey
+            };
+
+            _primaryKey++;
+
+            // Назначаем Tag и событие
+            catalogItem.Button.Tag = tagData;
+            catalogItem.Button.Click += CatalogItemButton_Click;
             // 
             // guna2PictureBox1
             // 
@@ -110,6 +121,20 @@ namespace OzonLookWinForm
             {
                 var newValue = scrollBar.Value;
                 this.Location = new Point(this.Location.X, -newValue);
+            }
+        }
+
+        private void CatalogItemButton_Click(object sender, EventArgs e)
+        {
+            if (sender is Guna2Button button && button.Tag is ButtonTag tagData)
+            {
+                _selectedKey = tagData.PrimaryKey;
+                MessageBox.Show($"Нажата кнопка для элемента [{tagData.I}, {tagData.J}]. Ключ: {tagData.PrimaryKey}");
+
+                this.Controls.Clear();
+                productControl = new ProductControl(_selectedKey);
+                productControl.Visible = true;
+                this.Controls.Add(productControl);
             }
         }
 

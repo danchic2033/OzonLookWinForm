@@ -47,7 +47,6 @@
             priceLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
             priceOfProduct = new Guna.UI2.WinForms.Guna2HtmlLabel();
             descriptionLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            raitingLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
             ((System.ComponentModel.ISupportInitialize)productPicture).BeginInit();
             SuspendLayout();
             // 
@@ -189,20 +188,10 @@
             descriptionLabel.TabIndex = 12;
             descriptionLabel.Text = "Описание";
             // 
-            // raitingLabel
-            // 
-            raitingLabel.BackColor = Color.Transparent;
-            raitingLabel.Location = new Point(127, 307);
-            raitingLabel.Name = "raitingLabel";
-            raitingLabel.Size = new Size(47, 17);
-            raitingLabel.TabIndex = 13;
-            raitingLabel.Text = "Рейтинг";
-            // 
             // ProductControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(raitingLabel);
             Controls.Add(descriptionLabel);
             Controls.Add(priceOfProduct);
             Controls.Add(priceLabel);
@@ -239,6 +228,5 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel priceLabel;
         private Guna.UI2.WinForms.Guna2HtmlLabel priceOfProduct;
         private Guna.UI2.WinForms.Guna2HtmlLabel descriptionLabel;
-        private Guna.UI2.WinForms.Guna2HtmlLabel raitingLabel;
     }
 }
