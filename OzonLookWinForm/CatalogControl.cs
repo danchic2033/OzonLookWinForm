@@ -26,15 +26,16 @@ namespace OzonLookWinForm
         private List<Product> products;
         private int _selectedKey;
         private int _primaryKey = 1;
+        private List<Product> filteredProducts;
         public CatalogControl()
         {
             InitializeComponent();
             products = _context.Products.ToList();
-            InitCatalogMap();
+            InitCatalogMap(products);
             guna2vScrollBar1.BindingContainer = catalogPanel;
         }
 
-        private void InitCatalogMap()
+        private void InitCatalogMap(List<Product> products)
         {
             catalogMap = new CatalogItem[products.Count / 2, 2];
 
@@ -49,6 +50,47 @@ namespace OzonLookWinForm
                     catalogMap[i, j] = newCatalogItem;
                 }
             }
+        }
+
+        private List<Product> ApplyFilters()
+        {
+            var selectedFilters = new List<string>();
+            foreach (var item in filterCheckedListBox.CheckedItems)
+            {
+                selectedFilters.Add(item.ToString());
+            }
+
+            var filteredList = products.Where(item =>
+            {
+                bool matches = true;
+                foreach (var filter in selectedFilters)
+                {
+                    switch (filter)
+                    {
+                        case "Мужская одежда":
+                            matches &= item.Gender == "Мужчинам";
+                            break;
+                        case "Женская одежда":
+                            matches &= item.Gender == "Женщинам";
+                            break;
+                        case "Верхняя одежда":
+                            matches &= item.TypeClothes == "Верхняя Одежда";
+                            break;
+                        case "Джинсы":
+                            matches &= item.TypeClothes == "Джинсы";
+                            break;
+                        case "Футболки":
+                            matches &= item.TypeClothes == "Футболки";
+                            break;
+                        default:
+                            break;
+
+                    }
+                }
+                return matches;
+            }).ToList();
+            _primaryKey = 1;
+            return filteredList;
         }
 
         private CatalogItem CreateCatalogItem(int indexRow, int indexColumn)
@@ -132,11 +174,17 @@ namespace OzonLookWinForm
                 MessageBox.Show($"Нажата кнопка для элемента [{tagData.I}, {tagData.J}]. Ключ: {tagData.PrimaryKey}");
 
                 this.Controls.Clear();
-                productControl = new ProductControl(_selectedKey);
+                productControl = new ProductControl(_selectedKey, filteredProducts);
                 productControl.Visible = true;
                 this.Controls.Add(productControl);
             }
         }
 
+        private void acceptFilterButton_Click(object sender, EventArgs e)
+        {
+            filteredProducts = ApplyFilters();
+            catalogPanel.Controls.Clear();
+            InitCatalogMap(filteredProducts);
+        }
     }
 }

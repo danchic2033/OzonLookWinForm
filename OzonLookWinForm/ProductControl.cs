@@ -17,10 +17,10 @@ namespace OzonLookWinForm
         private ApplicationDbContext _context = new ApplicationDbContext();
         private List<Product> products;
         private int _primaryKey;
-        public ProductControl(int primaryKey)
+        public ProductControl(int primaryKey, List<Product> filteredProducts)
         {
             InitializeComponent();
-            products = _context.Products.ToList();
+            products = filteredProducts;
             this.Load += ProductControl_Load;
             _primaryKey = primaryKey;
         }

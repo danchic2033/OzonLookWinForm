@@ -28,23 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             catalogPanel = new Guna.UI2.WinForms.Guna2Panel();
+            filterCheckedListBox = new CheckedListBox();
             guna2vScrollBar1 = new Guna.UI2.WinForms.Guna2VScrollBar();
+            acceptFilterButton = new Guna.UI2.WinForms.Guna2Button();
             catalogPanel.SuspendLayout();
             SuspendLayout();
             // 
             // catalogPanel
             // 
+            catalogPanel.Controls.Add(acceptFilterButton);
+            catalogPanel.Controls.Add(filterCheckedListBox);
             catalogPanel.Controls.Add(guna2vScrollBar1);
-            catalogPanel.CustomizableEdges = customizableEdges1;
-            catalogPanel.Location = new Point(0, 0);
+            catalogPanel.CustomizableEdges = customizableEdges3;
+            catalogPanel.Location = new Point(90, 0);
             catalogPanel.Margin = new Padding(10);
             catalogPanel.Name = "catalogPanel";
-            catalogPanel.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            catalogPanel.Size = new Size(800, 450);
+            catalogPanel.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            catalogPanel.Size = new Size(710, 450);
             catalogPanel.TabIndex = 1;
+            // 
+            // filterCheckedListBox
+            // 
+            filterCheckedListBox.BackColor = Color.FromArgb(246, 247, 251);
+            filterCheckedListBox.BorderStyle = BorderStyle.None;
+            filterCheckedListBox.FormattingEnabled = true;
+            filterCheckedListBox.Items.AddRange(new object[] { "Мужская одежда", "Женская одежда", "Верхняя одежда", "Джинсы", "Футболки" });
+            filterCheckedListBox.Location = new Point(23, 52);
+            filterCheckedListBox.Name = "filterCheckedListBox";
+            filterCheckedListBox.Size = new Size(148, 90);
+            filterCheckedListBox.TabIndex = 2;
             // 
             // guna2vScrollBar1
             // 
@@ -57,6 +74,24 @@
             guna2vScrollBar1.Size = new Size(18, 262);
             guna2vScrollBar1.TabIndex = 0;
             guna2vScrollBar1.ThumbColor = Color.FromArgb(246, 247, 251);
+            // 
+            // acceptFilterButton
+            // 
+            acceptFilterButton.CustomizableEdges = customizableEdges1;
+            acceptFilterButton.DisabledState.BorderColor = Color.DarkGray;
+            acceptFilterButton.DisabledState.CustomBorderColor = Color.DarkGray;
+            acceptFilterButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            acceptFilterButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            acceptFilterButton.FillColor = Color.FromArgb(26, 108, 254);
+            acceptFilterButton.Font = new Font("Segoe UI", 9F);
+            acceptFilterButton.ForeColor = Color.White;
+            acceptFilterButton.Location = new Point(23, 148);
+            acceptFilterButton.Name = "acceptFilterButton";
+            acceptFilterButton.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            acceptFilterButton.Size = new Size(148, 21);
+            acceptFilterButton.TabIndex = 3;
+            acceptFilterButton.Text = "Применить фильтр";
+            acceptFilterButton.Click += acceptFilterButton_Click;
             // 
             // CatalogControl
             // 
@@ -76,5 +111,7 @@
         private Guna.UI2.WinForms.Guna2ContainerControl guna2ContainerControl1;
         private Guna.UI2.WinForms.Guna2Panel catalogPanel;
         private Guna.UI2.WinForms.Guna2VScrollBar guna2vScrollBar1;
+        private CheckedListBox filterCheckedListBox;
+        private Guna.UI2.WinForms.Guna2Button acceptFilterButton;
     }
 }
