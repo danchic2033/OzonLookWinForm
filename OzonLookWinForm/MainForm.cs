@@ -5,6 +5,7 @@ namespace OzonLookWinForm
         private ProfileControl? profileControl;
         private CatalogControl? catalogControl;
         private ProfileControl? productControl;
+        private FavoriteCatalog? favoriteCatalog;
 
         public MainForm()
         {
@@ -28,6 +29,8 @@ namespace OzonLookWinForm
             catalogControl = new CatalogControl();
             this.Controls.Add(catalogControl);
             profileControl.Visible = false;
+            productControl = new ProfileControl();
+            productControl.Visible = false;
             catalogControl.Visible = true;
             this.Controls.Add(catalogControl);
         }
@@ -42,7 +45,11 @@ namespace OzonLookWinForm
 
         private void favoriteButton_Click(object sender, EventArgs e)
         {
-
+            favoriteCatalog = new FavoriteCatalog();
+            this.Controls.Add(favoriteCatalog);
+            profileControl.Visible = false;
+            catalogControl.Visible = false;
+            favoriteCatalog.Visible = true;
         }
 
         private void historyButton_Click(object sender, EventArgs e)

@@ -36,7 +36,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             productPicture = new Guna.UI2.WinForms.Guna2PictureBox();
             fitButton = new Guna.UI2.WinForms.Guna2Button();
-            shopButton = new Guna.UI2.WinForms.Guna2Button();
+            addFavoriteButton = new Guna.UI2.WinForms.Guna2Button();
             brendLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
             nameOfClothe = new Guna.UI2.WinForms.Guna2HtmlLabel();
             nameOfBrendLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -81,22 +81,23 @@
             fitButton.Text = "Примерить";
             fitButton.Click += fitButton_Click;
             // 
-            // shopButton
+            // addFavoriteButton
             // 
-            shopButton.CustomizableEdges = customizableEdges5;
-            shopButton.DisabledState.BorderColor = Color.DarkGray;
-            shopButton.DisabledState.CustomBorderColor = Color.DarkGray;
-            shopButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            shopButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            shopButton.FillColor = Color.FromArgb(26, 108, 254);
-            shopButton.Font = new Font("Segoe UI", 9F);
-            shopButton.ForeColor = Color.White;
-            shopButton.Location = new Point(127, 381);
-            shopButton.Name = "shopButton";
-            shopButton.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            shopButton.Size = new Size(220, 45);
-            shopButton.TabIndex = 2;
-            shopButton.Text = "Перейти в магазин";
+            addFavoriteButton.CustomizableEdges = customizableEdges5;
+            addFavoriteButton.DisabledState.BorderColor = Color.DarkGray;
+            addFavoriteButton.DisabledState.CustomBorderColor = Color.DarkGray;
+            addFavoriteButton.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            addFavoriteButton.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            addFavoriteButton.FillColor = Color.FromArgb(26, 108, 254);
+            addFavoriteButton.Font = new Font("Segoe UI", 9F);
+            addFavoriteButton.ForeColor = Color.White;
+            addFavoriteButton.Location = new Point(127, 381);
+            addFavoriteButton.Name = "addFavoriteButton";
+            addFavoriteButton.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            addFavoriteButton.Size = new Size(220, 45);
+            addFavoriteButton.TabIndex = 2;
+            addFavoriteButton.Text = "Добавить в избранное";
+            addFavoriteButton.Click += addFavoriteButton_Click;
             // 
             // brendLabel
             // 
@@ -202,7 +203,7 @@
             Controls.Add(nameOfBrendLabel);
             Controls.Add(nameOfClothe);
             Controls.Add(brendLabel);
-            Controls.Add(shopButton);
+            Controls.Add(addFavoriteButton);
             Controls.Add(fitButton);
             Controls.Add(productPicture);
             Name = "ProductControl";
@@ -217,7 +218,7 @@
 
         private Guna.UI2.WinForms.Guna2PictureBox productPicture;
         private Guna.UI2.WinForms.Guna2Button fitButton;
-        private Guna.UI2.WinForms.Guna2Button shopButton;
+        private Guna.UI2.WinForms.Guna2Button addFavoriteButton;
         private Guna.UI2.WinForms.Guna2HtmlLabel brendLabel;
         private Guna.UI2.WinForms.Guna2HtmlLabel nameOfClothe;
         private Guna.UI2.WinForms.Guna2HtmlLabel nameOfBrendLabel;
