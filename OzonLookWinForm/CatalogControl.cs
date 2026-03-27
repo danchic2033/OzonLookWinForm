@@ -27,10 +27,13 @@ namespace OzonLookWinForm
         private int _selectedKey;
         private int _primaryKey = 1;
         private List<Product> filteredProducts;
+        private List<Photo> _photos;
+        private int _photoId = 0;
         public CatalogControl()
         {
             InitializeComponent();
             products = _context.Products.ToList();
+            _photos = PhotoRepository.GetPhotos();
             InitCatalogMap(products);
             guna2vScrollBar1.BindingContainer = catalogPanel;
         }
@@ -44,10 +47,12 @@ namespace OzonLookWinForm
                 for (int j = 0; j < 2; j++)
                 {
                     var newCatalogItem = CreateCatalogItem(i, j);
+                    newCatalogItem.PictureBox.Image = _photos[_photoId].Images[0];
                     catalogPanel.Controls.Add(newCatalogItem.PictureBox);
                     catalogPanel.Controls.Add(newCatalogItem.Button);
                     newCatalogItem.Button.BringToFront();
                     catalogMap[i, j] = newCatalogItem;
+                    _photoId++;
                 }
             }
         }
@@ -152,6 +157,7 @@ namespace OzonLookWinForm
             catalogItem.PictureBox.Size = new Size(200, 200);
             catalogItem.PictureBox.TabIndex = 0;
             catalogItem.PictureBox.TabStop = false;
+            catalogItem.PictureBox.SizeMode = PictureBoxSizeMode.Zoom;
 
             return catalogItem;
         }
@@ -174,6 +180,7 @@ namespace OzonLookWinForm
                 MessageBox.Show($"Нажата кнопка для элемента [{tagData.I}, {tagData.J}]. Ключ: {tagData.PrimaryKey}");
 
                 this.Controls.Clear();
+                filteredProducts = ApplyFilters();
                 productControl = new ProductControl(_selectedKey, filteredProducts);
                 productControl.Visible = true;
                 this.Controls.Add(productControl);

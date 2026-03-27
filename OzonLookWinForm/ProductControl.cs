@@ -17,12 +17,14 @@ namespace OzonLookWinForm
         private ApplicationDbContext _context = new ApplicationDbContext();
         private List<Product> products;
         private int _primaryKey;
+        private List<Photo> _photos;
         public ProductControl(int primaryKey, List<Product> filteredProducts)
         {
             InitializeComponent();
             products = filteredProducts;
             this.Load += ProductControl_Load;
             _primaryKey = primaryKey;
+            _photos = PhotoRepository.GetPhotos();
         }
 
         private void ProductControl_Load(object sender, EventArgs e)
@@ -34,6 +36,7 @@ namespace OzonLookWinForm
         {
             var product = products[_primaryKey - 1];
 
+            productPicture.Image = _photos[_primaryKey - 1].Images[0];
             nameOfBrendLabel.Text = product.Brend;
             nameOfClothe.Text = product.Name;
             compositionProductLabel.Text = product.Composition;
