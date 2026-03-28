@@ -1,4 +1,5 @@
-﻿using Library;
+﻿using Emgu.CV.CvEnum;
+using Library;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,9 +18,13 @@ namespace OzonLookWinForm
         private ApplicationDbContext _context = new ApplicationDbContext();
         private List<Product> products;
         private int _primaryKey;
+
+        public List<HistoryProducts> HistoryProduct { get; }
+
         private List<Photo> _photos;
         private bool marker = false;
         public List<FavoriteProducts> FavoriteProducts { get; }
+        
 
         public ProductControl(int primaryKey, List<Product> filteredProducts)
         {
@@ -36,6 +41,27 @@ namespace OzonLookWinForm
             _primaryKey = primaryKey;
             FavoriteProducts = favoriteProducts;
             ShowFavoriteProduct();
+        }
+        public ProductControl(int primaryKey, List<HistoryProducts> _historyProducts)
+        {
+            InitializeComponent();
+            _primaryKey = primaryKey;
+            HistoryProduct = _historyProducts;
+            ShowHistoryProduct();
+        }
+
+        private void ShowHistoryProduct()
+        {
+            marker = true;
+            var product = HistoryProduct[_primaryKey - 1];
+
+            productPicture.Image = product.PhotosHistoryProduct[_primaryKey - 1];
+            nameOfBrendLabel.Text = product.HistoryProduct[_primaryKey - 1].Brend;
+            nameOfClothe.Text = product.HistoryProduct[_primaryKey - 1].Name;
+            compositionProductLabel.Text = product.HistoryProduct[_primaryKey - 1].Composition;
+            articleNumberLabel.Text = product.HistoryProduct[_primaryKey - 1].Article;
+            priceOfProduct.Text = product.HistoryProduct[_primaryKey - 1].Price;
+            descriptionLabel.Text = product.HistoryProduct[_primaryKey - 1].Description;
         }
 
         private void ShowFavoriteProduct()
@@ -71,6 +97,8 @@ namespace OzonLookWinForm
             articleNumberLabel.Text = product.Article;
             priceOfProduct.Text = product.Price;
             descriptionLabel.Text = product.Description;
+            AddItemHistoryCatalog();
+            marker = true;
         }
 
         private void fitButton_Click(object sender, EventArgs e)
@@ -84,6 +112,12 @@ namespace OzonLookWinForm
         {
             var product = products[_primaryKey - 1];
             FavoriteProductsRepository.SaveProduct(product, _photos[_primaryKey - 1].Images[0]);
+        }
+
+        private void AddItemHistoryCatalog()
+        {
+            var product = products[_primaryKey - 1];
+            HistoryProductsRepository.SaveProduct(product, _photos[_primaryKey - 1].Images[0]);
         }
     }
 }
