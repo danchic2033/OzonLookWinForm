@@ -15,11 +15,22 @@ namespace OzonLookWinForm
         public ProfileControl()
         {
             InitializeComponent();
+            InitStatistics();
         }
 
-        private void guna2HtmlLabel1_Click(object sender, EventArgs e)
+        private void InitStatistics()
         {
+            var listProductsStats = FitClothesDataRepository.GetProductsStats()
+                                    .ToArray();
+            if (listProductsStats.Length == 0)
+            { 
+                return; 
+            }
 
+            var allTypeClothes = listProductsStats
+                                 .ToArray();
+
+            numberOfFitLabel.Text = allTypeClothes.Length.ToString();
         }
     }
 }

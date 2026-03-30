@@ -18,6 +18,7 @@ namespace OzonLookWinForm
         private ApplicationDbContext _context = new ApplicationDbContext();
         private List<Product> products;
         private int _primaryKey;
+        private Product TopProduct;
 
         public List<HistoryProducts> HistoryProduct { get; }
 
@@ -90,6 +91,8 @@ namespace OzonLookWinForm
         {
             var product = products[_primaryKey - 1];
 
+            TopProduct = product;
+
             productPicture.Image = _photos[_primaryKey - 1].Images[0];
             nameOfBrendLabel.Text = product.Brend;
             nameOfClothe.Text = product.Name;
@@ -103,9 +106,12 @@ namespace OzonLookWinForm
 
         private void fitButton_Click(object sender, EventArgs e)
         {
-            var image = productPicture.Image;
-            var fitClothesForm = new FitClothesForm(image);
-            fitClothesForm.ShowDialog();
+            FitClothesDataRepository.AddClothesTop(TopProduct);
+
+
+            //var image = productPicture.Image;
+            //var fitClothesForm = new FitClothesForm(image);
+            //fitClothesForm.ShowDialog();
         }
 
         private void addFavoriteButton_Click(object sender, EventArgs e)

@@ -4,7 +4,7 @@ namespace OzonLookWinForm
     {
         private ProfileControl? profileControl;
         private CatalogControl? catalogControl;
-        private ProfileControl? productControl;
+        private ProductControl? productControl;
         private FavoriteCatalog? favoriteCatalog;
         private HistoryControl? historyControl;
 
@@ -15,7 +15,13 @@ namespace OzonLookWinForm
 
         private void Profile(object sender, EventArgs e)
         {
-
+            profileControl = new ProfileControl();
+            this.Controls.Add(profileControl);
+            profileControl.Visible = true;
+            profileControl.BringToFront();
+            this.BringToFront();
+            //favoriteCatalog.Visible = false;
+            //historyControl.Visible = false;
         }
 
         private void MainForm_Load_First(object sender, EventArgs e)
@@ -30,8 +36,6 @@ namespace OzonLookWinForm
             catalogControl = new CatalogControl();
             this.Controls.Add(catalogControl);
             profileControl.Visible = false;
-            productControl = new ProfileControl();
-            productControl.Visible = false;
             catalogControl.Visible = true;
             this.Controls.Add(catalogControl);
         }

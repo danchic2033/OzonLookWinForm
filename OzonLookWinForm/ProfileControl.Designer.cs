@@ -33,14 +33,12 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             guna2CircleProgressBar1 = new Guna.UI2.WinForms.Guna2CircleProgressBar();
-            guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).BeginInit();
+            numberFitNameLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            numberOfFitLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            favoriteCategoriesGridView = new Guna.UI2.WinForms.Guna2DataGridView();
+            NumberItem = new DataGridViewTextBoxColumn();
+            NameTypeClothes = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)favoriteCategoriesGridView).BeginInit();
             SuspendLayout();
             // 
             // guna2CircleProgressBar1
@@ -59,52 +57,31 @@
             guna2CircleProgressBar1.TabIndex = 0;
             guna2CircleProgressBar1.Text = "guna2CircleProgressBar1";
             // 
-            // guna2HtmlLabel1
+            // numberFitNameLabel
             // 
-            guna2HtmlLabel1.BackColor = Color.Transparent;
-            guna2HtmlLabel1.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            guna2HtmlLabel1.Location = new Point(388, 80);
-            guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            guna2HtmlLabel1.Size = new Size(233, 32);
-            guna2HtmlLabel1.TabIndex = 1;
-            guna2HtmlLabel1.Text = "Количество примерок:";
-            guna2HtmlLabel1.Click += guna2HtmlLabel1_Click;
+            numberFitNameLabel.BackColor = Color.Transparent;
+            numberFitNameLabel.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            numberFitNameLabel.Location = new Point(388, 80);
+            numberFitNameLabel.Name = "numberFitNameLabel";
+            numberFitNameLabel.Size = new Size(233, 32);
+            numberFitNameLabel.TabIndex = 1;
+            numberFitNameLabel.Text = "Количество примерок:";
             // 
-            // guna2HtmlLabel2
+            // numberOfFitLabel
             // 
-            guna2HtmlLabel2.BackColor = Color.Transparent;
-            guna2HtmlLabel2.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            guna2HtmlLabel2.Location = new Point(627, 80);
-            guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            guna2HtmlLabel2.Size = new Size(15, 32);
-            guna2HtmlLabel2.TabIndex = 2;
-            guna2HtmlLabel2.Text = "0";
+            numberOfFitLabel.BackColor = Color.Transparent;
+            numberOfFitLabel.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            numberOfFitLabel.Location = new Point(627, 80);
+            numberOfFitLabel.Name = "numberOfFitLabel";
+            numberOfFitLabel.Size = new Size(15, 32);
+            numberOfFitLabel.TabIndex = 2;
+            numberOfFitLabel.Text = "0";
             // 
-            // guna2HtmlLabel3
-            // 
-            guna2HtmlLabel3.BackColor = Color.Transparent;
-            guna2HtmlLabel3.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            guna2HtmlLabel3.Location = new Point(388, 134);
-            guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            guna2HtmlLabel3.Size = new Size(173, 32);
-            guna2HtmlLabel3.TabIndex = 3;
-            guna2HtmlLabel3.Text = "Процент выкупа:";
-            // 
-            // guna2HtmlLabel4
-            // 
-            guna2HtmlLabel4.BackColor = Color.Transparent;
-            guna2HtmlLabel4.Font = new Font("Segoe UI Semibold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            guna2HtmlLabel4.Location = new Point(582, 134);
-            guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            guna2HtmlLabel4.Size = new Size(39, 32);
-            guna2HtmlLabel4.TabIndex = 4;
-            guna2HtmlLabel4.Text = "0 %";
-            // 
-            // guna2DataGridView1
+            // favoriteCategoriesGridView
             // 
             dataGridViewCellStyle1.BackColor = Color.White;
-            guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            guna2DataGridView1.BackgroundColor = Color.FromArgb(246, 247, 251);
+            favoriteCategoriesGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            favoriteCategoriesGridView.BackgroundColor = Color.FromArgb(246, 247, 251);
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(100, 88, 255);
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
@@ -112,10 +89,10 @@
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            guna2DataGridView1.ColumnHeadersHeight = 32;
-            guna2DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            guna2DataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2 });
+            favoriteCategoriesGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            favoriteCategoriesGridView.ColumnHeadersHeight = 32;
+            favoriteCategoriesGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            favoriteCategoriesGridView.Columns.AddRange(new DataGridViewColumn[] { NumberItem, NameTypeClothes });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.FromArgb(246, 247, 251);
             dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
@@ -123,59 +100,57 @@
             dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(255, 128, 128);
             dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(71, 69, 94);
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
-            guna2DataGridView1.GridColor = Color.FromArgb(231, 229, 255);
-            guna2DataGridView1.Location = new Point(388, 181);
-            guna2DataGridView1.Name = "guna2DataGridView1";
-            guna2DataGridView1.RowHeadersVisible = false;
-            guna2DataGridView1.Size = new Size(240, 150);
-            guna2DataGridView1.TabIndex = 5;
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
-            guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
-            guna2DataGridView1.ThemeStyle.BackColor = Color.FromArgb(246, 247, 251);
-            guna2DataGridView1.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
-            guna2DataGridView1.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
-            guna2DataGridView1.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
-            guna2DataGridView1.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
-            guna2DataGridView1.ThemeStyle.HeaderStyle.ForeColor = Color.White;
-            guna2DataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            guna2DataGridView1.ThemeStyle.HeaderStyle.Height = 32;
-            guna2DataGridView1.ThemeStyle.ReadOnly = false;
-            guna2DataGridView1.ThemeStyle.RowsStyle.BackColor = Color.White;
-            guna2DataGridView1.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            guna2DataGridView1.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
-            guna2DataGridView1.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
-            guna2DataGridView1.ThemeStyle.RowsStyle.Height = 25;
-            guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
+            favoriteCategoriesGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            favoriteCategoriesGridView.GridColor = Color.FromArgb(231, 229, 255);
+            favoriteCategoriesGridView.Location = new Point(388, 133);
+            favoriteCategoriesGridView.Name = "favoriteCategoriesGridView";
+            favoriteCategoriesGridView.RowHeadersVisible = false;
+            favoriteCategoriesGridView.Size = new Size(240, 150);
+            favoriteCategoriesGridView.TabIndex = 5;
+            favoriteCategoriesGridView.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White;
+            favoriteCategoriesGridView.ThemeStyle.AlternatingRowsStyle.Font = null;
+            favoriteCategoriesGridView.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty;
+            favoriteCategoriesGridView.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty;
+            favoriteCategoriesGridView.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty;
+            favoriteCategoriesGridView.ThemeStyle.BackColor = Color.FromArgb(246, 247, 251);
+            favoriteCategoriesGridView.ThemeStyle.GridColor = Color.FromArgb(231, 229, 255);
+            favoriteCategoriesGridView.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(100, 88, 255);
+            favoriteCategoriesGridView.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None;
+            favoriteCategoriesGridView.ThemeStyle.HeaderStyle.Font = new Font("Segoe UI", 9F);
+            favoriteCategoriesGridView.ThemeStyle.HeaderStyle.ForeColor = Color.White;
+            favoriteCategoriesGridView.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            favoriteCategoriesGridView.ThemeStyle.HeaderStyle.Height = 32;
+            favoriteCategoriesGridView.ThemeStyle.ReadOnly = false;
+            favoriteCategoriesGridView.ThemeStyle.RowsStyle.BackColor = Color.White;
+            favoriteCategoriesGridView.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            favoriteCategoriesGridView.ThemeStyle.RowsStyle.Font = new Font("Segoe UI", 9F);
+            favoriteCategoriesGridView.ThemeStyle.RowsStyle.ForeColor = Color.FromArgb(71, 69, 94);
+            favoriteCategoriesGridView.ThemeStyle.RowsStyle.Height = 25;
+            favoriteCategoriesGridView.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
+            favoriteCategoriesGridView.ThemeStyle.RowsStyle.SelectionForeColor = Color.FromArgb(71, 69, 94);
             // 
-            // Column1
+            // NumberItem
             // 
-            Column1.HeaderText = "№";
-            Column1.Name = "Column1";
+            NumberItem.HeaderText = "№";
+            NumberItem.Name = "NumberItem";
             // 
-            // Column2
+            // NameTypeClothes
             // 
-            Column2.HeaderText = "Любимые категории";
-            Column2.Name = "Column2";
+            NameTypeClothes.HeaderText = "Любимые категории";
+            NameTypeClothes.Name = "NameTypeClothes";
             // 
-            // Profile
+            // ProfileControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(246, 247, 251);
-            Controls.Add(guna2DataGridView1);
-            Controls.Add(guna2HtmlLabel4);
-            Controls.Add(guna2HtmlLabel3);
-            Controls.Add(guna2HtmlLabel2);
-            Controls.Add(guna2HtmlLabel1);
+            Controls.Add(favoriteCategoriesGridView);
+            Controls.Add(numberOfFitLabel);
+            Controls.Add(numberFitNameLabel);
             Controls.Add(guna2CircleProgressBar1);
-            Name = "Profile";
+            Name = "ProfileControl";
             Size = new Size(702, 426);
-            ((System.ComponentModel.ISupportInitialize)guna2DataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)favoriteCategoriesGridView).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -183,12 +158,10 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2CircleProgressBar guna2CircleProgressBar1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
-        private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
+        private Guna.UI2.WinForms.Guna2HtmlLabel numberFitNameLabel;
+        private Guna.UI2.WinForms.Guna2HtmlLabel numberOfFitLabel;
+        private Guna.UI2.WinForms.Guna2DataGridView favoriteCategoriesGridView;
+        private DataGridViewTextBoxColumn NumberItem;
+        private DataGridViewTextBoxColumn NameTypeClothes;
     }
 }
