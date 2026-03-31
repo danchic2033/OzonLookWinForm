@@ -1,9 +1,4 @@
 ﻿using Library;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OzonLookWinForm
 {
@@ -19,7 +14,6 @@ namespace OzonLookWinForm
         }
         public static List<FavoriteProducts> GetProduct()
         {
-            
             return _favoriteProducts;
         }
     }
