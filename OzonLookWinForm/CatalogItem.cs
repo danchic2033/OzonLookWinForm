@@ -4,7 +4,7 @@ namespace OzonLookWinForm
 {
     public class CatalogItem
     {
-        public Guna2PictureBox PictureBox { get; set; }
-        public Guna2Button Button { get; set; }
+        public Guna2PictureBox? PictureBox { get; set; }
+        public Guna2Button? Button { get; set; }
     }
 }
