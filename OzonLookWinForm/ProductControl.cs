@@ -1,39 +1,25 @@
-﻿using Emgu.CV.CvEnum;
-using Library;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Library;
 
 namespace OzonLookWinForm
 {
     public partial class ProductControl : UserControl
     {
-        private ApplicationDbContext _context = new ApplicationDbContext();
-        private List<Product> products;
-        private int _primaryKey;
-        private Product TopProduct;
-
         public List<HistoryProducts> HistoryProduct { get; }
-
-        private List<Photo> _photos;
-        private bool marker = false;
         public List<FavoriteProducts> FavoriteProducts { get; }
+        private List<Product> _products;
+        private List<Photo> _photos;
+        private Product _topProduct;
+        private int _primaryKey;
+        private bool _marker = false;
         
 
         public ProductControl(int primaryKey, List<Product> filteredProducts)
         {
             InitializeComponent();
-            products = filteredProducts;
-            this.Load += ProductControl_Load;
+            _products = filteredProducts;
             _primaryKey = primaryKey;
             _photos = PhotoRepository.GetPhotos();
+            this.Load += ProductControl_Load;
         }
 
         public ProductControl(int primaryKey, List<FavoriteProducts> favoriteProducts)
@@ -53,7 +39,7 @@ namespace OzonLookWinForm
 
         private void ShowHistoryProduct()
         {
-            marker = true;
+            _marker = true;
             var product = HistoryProduct[_primaryKey - 1];
 
             productPicture.Image = product.PhotosHistoryProduct[_primaryKey - 1];
@@ -67,7 +53,7 @@ namespace OzonLookWinForm
 
         private void ShowFavoriteProduct()
         {
-            marker = true;
+            _marker = true;
             var product = FavoriteProducts[_primaryKey - 1];
 
             productPicture.Image = product.PhotosFavoriteProduct[_primaryKey - 1];
@@ -81,7 +67,7 @@ namespace OzonLookWinForm
 
         private void ProductControl_Load(object sender, EventArgs e)
         {
-            if (marker == false)
+            if (_marker == false)
             {
                 ShowProduct();
             }
@@ -89,9 +75,9 @@ namespace OzonLookWinForm
 
         private void ShowProduct()
         {
-            var product = products[_primaryKey - 1];
+            var product = _products[_primaryKey - 1];
 
-            TopProduct = product;
+            _topProduct = product;
 
             productPicture.Image = _photos[_primaryKey - 1].Images[0];
             nameOfBrendLabel.Text = product.Brend;
@@ -101,12 +87,12 @@ namespace OzonLookWinForm
             priceOfProduct.Text = product.Price;
             descriptionLabel.Text = product.Description;
             AddItemHistoryCatalog();
-            marker = true;
+            _marker = true;
         }
 
         private void fitButton_Click(object sender, EventArgs e)
         {
-            FitClothesDataRepository.AddClothesTop(TopProduct);
+            FitClothesDataRepository.AddClothesTop(_topProduct);
 
 
             //var image = productPicture.Image;
@@ -116,13 +102,13 @@ namespace OzonLookWinForm
 
         private void addFavoriteButton_Click(object sender, EventArgs e)
         {
-            var product = products[_primaryKey - 1];
+            var product = _products[_primaryKey - 1];
             FavoriteProductsRepository.SaveProduct(product, _photos[_primaryKey - 1].Images[0]);
         }
 
         private void AddItemHistoryCatalog()
         {
-            var product = products[_primaryKey - 1];
+            var product = _products[_primaryKey - 1];
             HistoryProductsRepository.SaveProduct(product, _photos[_primaryKey - 1].Images[0]);
         }
     }
