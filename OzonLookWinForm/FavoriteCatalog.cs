@@ -1,22 +1,12 @@
 ﻿using Guna.UI2.WinForms;
-using Library;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace OzonLookWinForm
 {
     public partial class FavoriteCatalog : UserControl
     {
         private List<FavoriteProducts> _favoriteProducts;
-        private ProductControl? productControl;
-        private CatalogItem[,] catalogMap;
+        private CatalogItem[,] _catalogMap;
+        private ProductControl? _productControl;
         private int _selectedKey;
         private int _photoId = 0;
         private int _primaryKey = 1;
@@ -31,7 +21,7 @@ namespace OzonLookWinForm
         {
             if (_favoriteProducts.Count == 1)
             {
-                catalogMap = new CatalogItem[1, 1];
+                _catalogMap = new CatalogItem[1, 1];
 
                 for (int i = 0; i < 1; i++)
                 {
@@ -42,14 +32,14 @@ namespace OzonLookWinForm
                         favoriteCatalogPanel.Controls.Add(newCatalogItem.PictureBox);
                         favoriteCatalogPanel.Controls.Add(newCatalogItem.Button);
                         newCatalogItem.Button.BringToFront();
-                        catalogMap[i, j] = newCatalogItem;
+                        _catalogMap[i, j] = newCatalogItem;
                         _photoId++;
                     }
                 }
             }
             else
             {
-                catalogMap = new CatalogItem[_favoriteProducts.Count / 2, 2];
+                _catalogMap = new CatalogItem[_favoriteProducts.Count / 2, 2];
 
                 for (int i = 0; i < _favoriteProducts.Count / 2; i++)
                 {
@@ -60,7 +50,7 @@ namespace OzonLookWinForm
                         favoriteCatalogPanel.Controls.Add(newCatalogItem.PictureBox);
                         favoriteCatalogPanel.Controls.Add(newCatalogItem.Button);
                         newCatalogItem.Button.BringToFront();
-                        catalogMap[i, j] = newCatalogItem;
+                        _catalogMap[i, j] = newCatalogItem;
                         _photoId++;
                     }
                 }
@@ -136,12 +126,11 @@ namespace OzonLookWinForm
             if (sender is Guna2Button button && button.Tag is ButtonTag tagData)
             {
                 _selectedKey = tagData.PrimaryKey;
-                MessageBox.Show($"Нажата кнопка для элемента [{tagData.I}, {tagData.J}]. Ключ: {tagData.PrimaryKey}");
 
                 this.Controls.Clear();
-                productControl = new ProductControl(_selectedKey, _favoriteProducts);
-                productControl.Visible = true;
-                this.Controls.Add(productControl);
+                _productControl = new ProductControl(_selectedKey, _favoriteProducts);
+                _productControl.Visible = true;
+                this.Controls.Add(_productControl);
             }
         }
     }
