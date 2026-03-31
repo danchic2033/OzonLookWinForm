@@ -91,7 +91,7 @@
             acceptFilterButton.Size = new Size(148, 21);
             acceptFilterButton.TabIndex = 3;
             acceptFilterButton.Text = "Применить фильтр";
-            acceptFilterButton.Click += acceptFilterButton_Click;
+            acceptFilterButton.Click += AcceptFilterButton_Click;
             // 
             // CatalogControl
             // 

@@ -1,46 +1,33 @@
 ﻿using Guna.UI2.WinForms;
-using Guna.UI2.WinForms.Suite;
 using Library;
-using Microsoft.EntityFrameworkCore;
-using OzonLookWinForm.Properties;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Tensorflow.Operations.Initializers;
+
 
 namespace OzonLookWinForm
 {
     public partial class CatalogControl : UserControl
     {
-        private CatalogItem[,] catalogMap;
-        private ProductControl? productControl;
+        private CatalogItem[,] _catalogMap;
+        private List<Product> _products;
+        private List<Product> _filteredProducts;
+        private List<Photo> _photos;
+        private ProductControl? _productControl;
         private ApplicationDbContext _context = new ApplicationDbContext();
-        private List<Product> products;
         private int _selectedKey;
         private int _primaryKey = 1;
-        private List<Product> filteredProducts;
-        private List<Photo> _photos;
         private int _photoId = 0;
         public CatalogControl()
         {
             InitializeComponent();
-            products = _context.Products.ToList();
+            _products = _context.Products.ToList();
             _photos = PhotoRepository.GetPhotos();
-            InitCatalogMap(products);
+            InitCatalogMap(_products);
             guna2vScrollBar1.BindingContainer = catalogPanel;
         }
 
         private void InitCatalogMap(List<Product> products)
         {
-            catalogMap = new CatalogItem[products.Count / 2, 2];
+            _catalogMap = new CatalogItem[products.Count / 2, 2];
 
             for (int i = 0; i < products.Count / 2; i++)
             {
@@ -51,7 +38,7 @@ namespace OzonLookWinForm
                     catalogPanel.Controls.Add(newCatalogItem.PictureBox);
                     catalogPanel.Controls.Add(newCatalogItem.Button);
                     newCatalogItem.Button.BringToFront();
-                    catalogMap[i, j] = newCatalogItem;
+                    _catalogMap[i, j] = newCatalogItem;
                     _photoId++;
                 }
             }
@@ -65,7 +52,7 @@ namespace OzonLookWinForm
                 selectedFilters.Add(item.ToString());
             }
 
-            var filteredList = products.Where(item =>
+            var filteredList = _products.Where(item =>
             {
                 bool matches = true;
                 foreach (var filter in selectedFilters)
@@ -104,9 +91,7 @@ namespace OzonLookWinForm
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            // 
-            // fitButton
-            // 
+
             var catalogItem = new CatalogItem();
 
             catalogItem.Button = new Guna.UI2.WinForms.Guna2Button();
@@ -130,7 +115,6 @@ namespace OzonLookWinForm
             catalogItem.Button.Size = new Size(200, 40);
             catalogItem.Button.TabIndex = 1;
             catalogItem.Button.Text = "Примерить";
-            //catalogItem.Button.Click += fitButton_Click;
 
             var tagData = new ButtonTag
             {
@@ -141,12 +125,9 @@ namespace OzonLookWinForm
 
             _primaryKey++;
 
-            // Назначаем Tag и событие
             catalogItem.Button.Tag = tagData;
             catalogItem.Button.Click += CatalogItemButton_Click;
-            // 
-            // guna2PictureBox1
-            // 
+
             catalogItem.PictureBox.CustomizableEdges = customizableEdges7;
             catalogItem.PictureBox.ImageRotate = 0F;
             x = 200 + indexColumn * 250;
@@ -177,21 +158,20 @@ namespace OzonLookWinForm
             if (sender is Guna2Button button && button.Tag is ButtonTag tagData)
             {
                 _selectedKey = tagData.PrimaryKey;
-                MessageBox.Show($"Нажата кнопка для элемента [{tagData.I}, {tagData.J}]. Ключ: {tagData.PrimaryKey}");
 
                 this.Controls.Clear();
-                filteredProducts = ApplyFilters();
-                productControl = new ProductControl(_selectedKey, filteredProducts);
-                productControl.Visible = true;
-                this.Controls.Add(productControl);
+                _filteredProducts = ApplyFilters();
+                _productControl = new ProductControl(_selectedKey, _filteredProducts);
+                _productControl.Visible = true;
+                this.Controls.Add(_productControl);
             }
         }
 
-        private void acceptFilterButton_Click(object sender, EventArgs e)
+        private void AcceptFilterButton_Click(object sender, EventArgs e)
         {
-            filteredProducts = ApplyFilters();
+            _filteredProducts = ApplyFilters();
             catalogPanel.Controls.Clear();
-            InitCatalogMap(filteredProducts);
+            InitCatalogMap(_filteredProducts);
         }
     }
 }
