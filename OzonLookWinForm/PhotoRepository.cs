@@ -1,11 +1,4 @@
-﻿using SixLabors.ImageSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Tensorflow.TensorShapeProto.Types;
-using Image = System.Drawing.Image;
+﻿using Image = System.Drawing.Image;
 
 namespace OzonLookWinForm
 {
